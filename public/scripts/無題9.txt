@@ -1,4 +1,0 @@
-module.exports = alarmToDate;
-function alarmToDate(obj) {
-  return new Date();
-};
