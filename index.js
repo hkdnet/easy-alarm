@@ -4,8 +4,14 @@ var converter = require('./public/scripts/alarmToDate.js');
 
 var obj = require('./alarms.json');
 
-obj.alarms.forEach(function (obj) {
-  var limit = converter(obj);
+obj.alarms.map(function(obj) {
+  obj.limit = converter(obj);
+  return obj;
+}).sort(function(o1, o2) {
+  return o1.limit - o2.limit;
+}).forEach(function (obj) {
+  var limit = obj.limit;
+  limit.setSeconds(obj.id % 60);
   var func = function () {
     notifier.notify({
       'title': obj.title || "",
