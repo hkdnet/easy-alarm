@@ -1,0 +1,22 @@
+{
+  "name": "hkdnet-gulp-tasks",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "node ./node_modules/browserify/bin/cmd.js ./public/scripts/index.js -x node_modules/jquery/dist/jquery.min.js ./public/scripts/alarmToDate.js -o  ./public/scripts/app.js",
+    "listen": "node ./node_modules/json-server/bin/index.js alarms.json -p 3000"
+  },
+  "author": "hkdnet",
+  "license": "MIT",
+  "dependencies": {
+    "cron": "^1.0.9",
+    "jquery": "^2.1.4",
+    "json-server": "^0.7.20",
+    "node-notifier": "^4.2.3"
+  },
+  "devDependencies": {
+    "browserify": "^10.2.6"
+  }
+}

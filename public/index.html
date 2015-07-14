@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="./css/index.css">
+</head>
+<body>
+  <form action="/alarms/" method="POST">
+    <div class="date-section">
+      <div class="col-2 col-2-left">
+        <label for="date">日付</label>
+      </div>
+      <div class="col-2 col-2-right">
+        <input required type="date" name="date">
+      </div>
+      <div class="col-2 col-2-left">
+        <label for="hours"> 時刻</label>
+      </div>
+      <div class="col-2 col-2-right">
+        <input required type="number" min="0" max="23" name="hours"/>
+        :
+        <input required type="number" min="0" max="59" name="minutes"/>
+      </div>
+    </div>
+    <div class="title-section">
+      <div class="col-2 col-2-left">
+        <label for="title">タイトル</label>
+      </div>
+      <div class="col-2 col-2-right">
+        <input required type="text" name="title" />
+      </div>
+    </div>
+    <div class="message-section">
+      <div class="col-2 col-2-left">
+        <label for="msg">メッセージ</label>
+      </div>
+      <div class="col-2 col-2-right">
+        <textarea required name="msg"></textarea>
+      </div>
+    </div>
+    <input type="submit" value="追加">
+  </form>
+  <fieldset>
+    <legend>一覧</legend>
+    <ul id="alarm-list"></ul>
+  </fieldset>
+  <script src="./scripts/app.js"></script>
+</body>
+</html>

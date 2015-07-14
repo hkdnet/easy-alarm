@@ -1,0 +1,9 @@
+* {
+  font-family: 'Meiryo UI';
+}
+label {
+}
+div.col-2-left {
+  width: 100px;
+  display: inline-block;
+}
