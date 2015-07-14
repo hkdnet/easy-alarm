@@ -14,4 +14,3 @@ obj.alarms.forEach(function (obj) {
   };
   var job = new CronJob(limit, func, null, true);
 });
-
