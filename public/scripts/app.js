@@ -9211,27 +9211,8 @@ return jQuery;
 }));
 
 },{}],2:[function(require,module,exports){
-module.exports = alarmToDate;
-function alarmToDate(obj) {
-  var d = new Date();
-  if(obj.date) {
-    var arr = obj.date.split("-");
-    obj.year = arr[0] - 0;
-    obj.month = arr[1] - 0;
-    obj.day = arr[2] - 0;
-  }
-  var date = new Date(
-    obj.year || d.getFullYear(),
-    obj.month - 1 || d.getMonth(),
-    obj.day || d.getDay(),
-    obj.hours || d.getHours() ,
-    obj.minutes || 0
-  );
-  return date
-};
-},{}],3:[function(require,module,exports){
 var $ = require('jquery');
-var converter = require('./alarmToDate.js');
+var converter = require('../../src/alarmToDate.js');
 var padding = require('../../src/padding.js');
 
 $(function() {
@@ -9271,7 +9252,26 @@ $(function() {
   $('[name=minutes]').val(d.getMinutes());
 });
 
-},{"../../src/padding.js":4,"./alarmToDate.js":2,"jquery":1}],4:[function(require,module,exports){
+},{"../../src/alarmToDate.js":3,"../../src/padding.js":4,"jquery":1}],3:[function(require,module,exports){
+module.exports = alarmToDate;
+function alarmToDate(obj) {
+  var d = new Date();
+  if(obj.date) {
+    var arr = obj.date.split("-");
+    obj.year = arr[0] - 0;
+    obj.month = arr[1] - 0;
+    obj.day = arr[2] - 0;
+  }
+  var date = new Date(
+    obj.year || d.getFullYear(),
+    obj.month - 1 || d.getMonth(),
+    obj.day || d.getDay(),
+    obj.hours || d.getHours() ,
+    obj.minutes || 0
+  );
+  return date
+};
+},{}],4:[function(require,module,exports){
 module.exports = padding;
 function padding(val, pad, len, isLeft) {
   val = val.toString();
@@ -9285,4 +9285,4 @@ function padding(val, pad, len, isLeft) {
   return ret + val;
 }
 
-},{}]},{},[3,2]);
+},{}]},{},[2]);

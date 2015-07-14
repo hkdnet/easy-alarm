@@ -1,5 +1,5 @@
 var $ = require('jquery');
-var converter = require('./alarmToDate.js');
+var converter = require('../../src/alarmToDate.js');
 var padding = require('../../src/padding.js');
 
 $(function() {

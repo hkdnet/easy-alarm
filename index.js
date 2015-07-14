@@ -1,6 +1,6 @@
 ﻿var CronJob = require('cron').CronJob;
 var notifier = require('node-notifier');
-var converter = require('./public/scripts/alarmToDate.js');
+var converter = require('./src/alarmToDate.js');
 
 var obj = require('./alarms.json');
 
