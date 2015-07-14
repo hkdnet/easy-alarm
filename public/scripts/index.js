@@ -1,5 +1,6 @@
 var $ = require('jquery');
 var converter = require('./alarmToDate.js');
+var padding = require('../../src/padding.js');
 
 $(function() {
   $.ajax( {
@@ -25,4 +26,15 @@ $(function() {
       return $lis;
     });
   });
+
+  var d = new Date();
+  $('[name=date]').val(function() {
+
+    var ret = d.getFullYear() + '-';
+    ret += padding(d.getMonth(), '0', 2) + '-';
+    ret += padding(d.getDay(), '0', 2);
+    return ret;
+  });
+  $('[name=hours]').val(d.getHours());
+  $('[name=minutes]').val(d.getMinutes());
 });

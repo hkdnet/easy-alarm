@@ -9232,6 +9232,7 @@ function alarmToDate(obj) {
 },{}],3:[function(require,module,exports){
 var $ = require('jquery');
 var converter = require('./alarmToDate.js');
+var padding = require('../../src/padding.js');
 
 $(function() {
   $.ajax( {
@@ -9242,21 +9243,46 @@ $(function() {
     var $list = $('#alarm-list');
     var today = new Date();
     $list.append(function() {
-      return $.map(arr, function(e) {
-        var text = e.date + " " + e.hours + ":" + e.minutes + " [" + e.title + "] " + e.msg;
+      var $lis = $.map(arr, function(e) {
         var target = converter(e);
         if(target > today) {
+          var text = e.date + " " + e.hours + ":" + e.minutes + " [" + e.title + "] " + e.msg;
           return $('<li>').text(text);
         } else {
           $.ajax({
             type: "DELETE",
             url: "/alarms/" + e.id
-          }).done(function () {
-            console.log(arugments);
-          })
+          });
         }
       });
+      return $lis;
     });
   });
+
+  var d = new Date();
+  $('[name=date]').val(function() {
+
+    var ret = d.getFullYear() + '-';
+    ret += padding(d.getMonth(), '0', 2) + '-';
+    ret += padding(d.getDay(), '0', 2);
+    return ret;
+  });
+  $('[name=hours]').val(d.getHours());
+  $('[name=minutes]').val(d.getMinutes());
 });
-},{"./alarmToDate.js":2,"jquery":1}]},{},[3,2]);
+
+},{"../../src/padding.js":4,"./alarmToDate.js":2,"jquery":1}],4:[function(require,module,exports){
+module.exports = padding;
+function padding(val, pad, len, isLeft) {
+  val = val.toString();
+  var strLen = val.length;
+  var ret = "";
+  var i = 0;
+  var limit = len - strLen;
+  for(i = 0; i < limit; i++) {
+    ret += pad.toString();
+  }
+  return ret + val;
+}
+
+},{}]},{},[3,2]);
