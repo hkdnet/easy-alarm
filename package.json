@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "node ./node_modules/browserify/bin/cmd.js ./public/scripts/index.js -x node_modules/jquery/dist/jquery.min.js -o ./public/scripts/app.js",
-    "listen": "node ./node_modules/json-server/bin/index.js alarms.json -p 3000"
+    "listen": "npm run build && node ./node_modules/json-server/bin/index.js alarms.json -p 3000"
   },
   "author": "hkdnet",
   "license": "MIT",
